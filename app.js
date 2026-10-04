@@ -1,4 +1,4 @@
-const API_BASE = "/api/tmdb";
+const API_BASE = "/api/tmdb/proxy";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 const FAVORITES_KEY = "movie-finder:favorites";
 const LEGACY_TOKEN_KEY = "movie-finder:tmdb-read-access-token";
@@ -261,7 +261,9 @@ function updatePagination() {
 }
 
 async function request(endpoint, params = {}) {
-  const url = new URL(`${API_BASE}${endpoint}`, window.location.origin);
+  const url = new URL(API_BASE, window.location.origin);
+    url.searchParams.set("endpoint", endpoint.slice(1));
+  
   for (const [key, value] of Object.entries({ language: "uk-UA", ...params })) {
     url.searchParams.set(key, String(value));
   }
