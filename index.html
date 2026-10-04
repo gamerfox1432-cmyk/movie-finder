@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Movie Finder — знаходь фільми, переглядай рейтинги та зберігай улюблене."
+    />
+    <meta name="theme-color" content="#101014" />
+    <title>Movie Finder — твій наступний фільм</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Movie Finder — на головну">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>movie<span class="brand-accent">finder</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Основна навігація">
+          <button class="nav-link is-active" id="discover-nav" type="button">
+            Знайти фільм
+          </button>
+          <button class="nav-link favorites-nav" id="favorites-nav" type="button">
+            Обране <span class="favorite-count" id="favorite-count">0</span>
+          </button>
+        </nav>
+        <a class="github-link" href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
+          Дані від TMDB <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Кіно під твій настрій</p>
+            <h1 id="hero-title">Знайди фільм,<br />який <span>зачепить.</span></h1>
+            <p class="hero-description">
+              Від культової класики до свіжих прем’єр — твоя наступна кіновечірка починається тут.
+            </p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="poster poster-back"></div>
+            <div class="poster poster-middle"></div>
+            <div class="poster poster-front"><span>MF</span></div>
+            <div class="hero-orbit"></div>
+            <div class="hero-spark">✳</div>
+          </div>
+        </section>
+
+        <section class="search-section" aria-label="Пошук фільмів">
+          <form class="search-form" id="search-form" role="search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <label class="visually-hidden" for="search-input">Назва фільму</label>
+            <input
+              id="search-input"
+              name="query"
+              type="search"
+              placeholder="Назва фільму, наприклад «Інтерстеллар»"
+              autocomplete="off"
+            />
+            <button class="search-button" type="submit">Шукати <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="search-hint">Спробуй пошукати «Дюна», «Матриця» або «Інтерстеллар»</p>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow section-eyebrow" id="results-kicker">Твоя добірка</p>
+              <h2 id="results-title">Популярне зараз</h2>
+            </div>
+            <span class="results-meta" id="results-meta"></span>
+          </div>
+          <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+          <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
+          <div class="pagination" id="pagination" hidden>
+            <button class="page-button" id="previous-page" type="button" aria-label="Попередня сторінка">
+              ←
+            </button>
+            <span id="page-label"></span>
+            <button class="page-button" id="next-page" type="button" aria-label="Наступна сторінка">
+              →
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <a class="brand footer-brand" href="./">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>movie<span class="brand-accent">finder</span></span>
+        </a>
+        <p>Зроблено для кіноманів, які завжди шукають ще один хороший фільм.</p>
+        <span>© 2025 Movie Finder · Дані від TMDB</span>
+      </footer>
+    </div>
+
+    <dialog class="movie-dialog" id="movie-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Закрити">×</button>
+      <div class="dialog-content" id="dialog-content"></div>
+    </dialog>
+  </body>
+</html>
